@@ -133,9 +133,11 @@
     );
   }
 
-  // Show only upcoming events (today or later), soonest first,
-  // capped at 10. Past events simply drop off the page.
-  var MAX_EVENTS = 10;
+  // Upcoming events (today or later) show soonest first, capped
+  // at 10. The 3 most recent past events sit in a collapsed
+  // "Past events" section; older ones drop off the page.
+  var MAX_UPCOMING = 10;
+  var MAX_PAST = 3;
 
   function renderEvents(events) {
     var upcomingWrap = document.getElementById("events-upcoming");
@@ -144,17 +146,34 @@
     var today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    var upcoming = events.slice().sort(function (a, b) {
+    var sorted = events.slice().sort(function (a, b) {
       return String(a.date).localeCompare(String(b.date));
-    }).filter(function (ev) {
+    });
+    var upcoming = sorted.filter(function (ev) {
       var d = parseDate(ev.date);
       return !d || d >= today;
-    }).slice(0, MAX_EVENTS);
+    }).slice(0, MAX_UPCOMING);
+    var past = sorted.filter(function (ev) {
+      var d = parseDate(ev.date);
+      return d && d < today;
+    }).reverse().slice(0, MAX_PAST);
 
     upcomingWrap.innerHTML = upcoming.length
       ? '<ul class="event-list">' + upcoming.map(eventCard).join("") + "</ul>"
       : '<p class="events-empty">Nothing on the calendar right now. ' +
         "Check back soon, or watch our socials.</p>";
+
+    var pastWrap = document.getElementById("events-past");
+    var pastList = document.getElementById("events-past-list");
+    if (pastWrap && pastList) {
+      if (past.length) {
+        pastList.innerHTML =
+          '<ul class="event-list">' + past.map(eventCard).join("") + "</ul>";
+        pastWrap.hidden = false;
+      } else {
+        pastWrap.hidden = true;
+      }
+    }
   }
 
   /* ---------- Google Sheet loading ---------- */
