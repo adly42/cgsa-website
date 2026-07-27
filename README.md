@@ -99,8 +99,10 @@ LAYOUT.md             site plan / section spec
 
 ## Deploying
 
-Any static host works (GitHub Pages, Vercel, Netlify). For GitHub Pages:
-repo Settings → Pages → deploy from the `main` branch, root folder.
+Live at **https://cgsa-ucalgary.vercel.app**, hosted on Vercel and connected
+to this GitHub repo — every push to `main` deploys automatically. Sheet
+edits (events, exec, newsletters) show up on page refresh without a deploy;
+only code changes need a push.
 
 ## Contact
 
