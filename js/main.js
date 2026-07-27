@@ -197,10 +197,16 @@
       return String(b.date).localeCompare(String(a.date));
     });
 
+    // Keep the nav link in sync with the section's visibility.
+    var navLink = document.querySelector('.site-nav a[href="#newsletter"]');
+    var navItem = navLink && navLink.closest("li");
+
     if (!editions.length) {
       section.hidden = true;
+      if (navItem) navItem.hidden = true;
       return;
     }
+    if (navItem) navItem.hidden = false;
 
     var latest = editions[0];
     var rest = editions.slice(1);
