@@ -32,8 +32,9 @@ One-time setup:
 2. Put these headers in row 1 of each tab:
    - **Exec**: `Name | Role | Email | Photo`
    - **Events**: `Date | Title | Time | Location | Blurb | Photo`
-     (Date must be typed as `YYYY-MM-DD`, e.g. `2026-09-10` — format that
-     column as **Plain text** so Sheets doesn't reformat it)
+   - **Newsletter**: `Date | Title | PDF`
+     (Dates must be typed as `YYYY-MM-DD`, e.g. `2026-09-10` — format Date
+     columns as **Plain text** so Sheets doesn't reformat them)
 
    **Photo columns take a link, not an embedded image.** Paste an image URL
    into the cell as text. Do NOT use Insert → Image — images placed inside
@@ -52,6 +53,11 @@ From then on: edit the sheet, done. The site shows the next 10 upcoming
 events, plus the 3 most recent past ones in a collapsed "Past events"
 section. Older rows drop off automatically, so there's no need to delete
 them (though it keeps the sheet tidy).
+
+The Newsletter tab feeds the newsletter section: the newest edition (by
+Date) is featured with a read button, earlier ones are listed below, and
+the PDF column takes a pasted link (a Drive share link to the PDF works).
+The section stays hidden until the tab has at least one row.
 
 ### Option B: edit the data files directly
 
@@ -74,6 +80,7 @@ js/main.js            renders team + events (sheet or data/), mobile nav
 data/config.js        ← Google Sheet ID goes here (one-time setup)
 data/exec-team.js     ← fallback exec roster
 data/events.js        ← fallback events list
+data/newsletters.js   ← fallback newsletter list
 assets/               logo (ink + paper variants), team photo, fonts
 BRAND.md              visual identity: colors, typography, logo usage
 LAYOUT.md             site plan / section spec

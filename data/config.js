@@ -6,12 +6,13 @@
 // code to update the site.
 //
 // One-time setup (5 minutes, see README for details):
-//   1. Create a Google Sheet with two tabs named exactly
-//      "Exec" and "Events".
+//   1. Create a Google Sheet with three tabs named exactly
+//      "Exec", "Events", and "Newsletter".
 //      - Exec headers (row 1):   Name | Role | Email | Photo
 //      - Events headers (row 1): Date | Title | Time | Location | Blurb | Photo
-//        (Date must be typed as YYYY-MM-DD, e.g. 2026-09-10.
-//        Format the Date column as Plain text in Sheets.)
+//      - Newsletter headers:     Date | Title | PDF
+//        (Dates must be typed as YYYY-MM-DD, e.g. 2026-09-10.
+//        Format Date columns as Plain text in Sheets.)
 //      Photo cells must contain a LINK to an image (paste a URL
 //      as text), NOT an image inserted into the cell — inserted
 //      images don't come through to the site. Google Drive share

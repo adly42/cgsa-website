@@ -176,6 +176,69 @@
     }
   }
 
+  /* ---------- newsletter rendering ---------- */
+
+  function formatDate(str) {
+    var d = parseDate(str);
+    return d
+      ? MONTHS[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
+      : "";
+  }
+
+  function renderNewsletters(items) {
+    var section = document.getElementById("newsletter");
+    var wrap = document.getElementById("newsletter-list");
+    if (!section || !wrap || !items) return;
+
+    // Newest first; rows need at least a title and a PDF link.
+    var editions = items.filter(function (n) {
+      return n.title && n.pdf;
+    }).sort(function (a, b) {
+      return String(b.date).localeCompare(String(a.date));
+    });
+
+    if (!editions.length) {
+      section.hidden = true;
+      return;
+    }
+
+    var latest = editions[0];
+    var rest = editions.slice(1);
+
+    var html =
+      '<div class="newsletter-latest">' +
+      "<div>" +
+      '<p class="newsletter-latest-label mono">Latest edition</p>' +
+      "<h3>" + esc(latest.title) + "</h3>" +
+      (latest.date
+        ? '<p class="newsletter-date mono">' + esc(formatDate(latest.date)) + "</p>"
+        : "") +
+      "</div>" +
+      '<a class="btn btn-primary" href="' + esc(latest.pdf) +
+      '" target="_blank" rel="noopener">Read it</a>' +
+      "</div>";
+
+    if (rest.length) {
+      html +=
+        '<p class="newsletter-archive-label mono">Previous editions</p>' +
+        '<ul class="newsletter-list">' +
+        rest.map(function (n) {
+          return (
+            '<li><a href="' + esc(n.pdf) + '" target="_blank" rel="noopener">' +
+            esc(n.title) + "</a>" +
+            (n.date
+              ? '<span class="newsletter-date mono">' + esc(formatDate(n.date)) + "</span>"
+              : "") +
+            "</li>"
+          );
+        }).join("") +
+        "</ul>";
+    }
+
+    wrap.innerHTML = html;
+    section.hidden = false;
+  }
+
   /* ---------- Google Sheet loading ---------- */
 
   // Minimal CSV parser that handles quoted fields, embedded
@@ -241,6 +304,7 @@
 
   var localTeam = typeof EXEC_TEAM !== "undefined" ? EXEC_TEAM : [];
   var localEvents = typeof EVENTS !== "undefined" ? EVENTS : [];
+  var localNewsletters = typeof NEWSLETTERS !== "undefined" ? NEWSLETTERS : [];
   var sheetId =
     typeof SITE_CONFIG !== "undefined" && SITE_CONFIG && SITE_CONFIG.sheetId
       ? String(SITE_CONFIG.sheetId).trim()
@@ -249,6 +313,7 @@
   if (!sheetId) {
     renderTeam(localTeam);
     renderEvents(localEvents);
+    renderNewsletters(localNewsletters);
     return;
   }
 
@@ -266,5 +331,13 @@
     if (window.console) console.warn("CGSA: falling back to local data.", err);
     renderTeam(localTeam);
     renderEvents(localEvents);
+  });
+
+  // Newsletter loads on its own so a missing/renamed tab can
+  // never take the team or events down with it.
+  fetchSheetTab(sheetId, "Newsletter").then(function (items) {
+    renderNewsletters(items.length ? items : localNewsletters);
+  }).catch(function () {
+    renderNewsletters(localNewsletters);
   });
 })();
