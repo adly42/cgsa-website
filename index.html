@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CGSA — Chemistry Graduate Students' Association | University of Calgary</title>
+  <meta name="description" content="The CGSA represents all graduate students in the Department of Chemistry at the University of Calgary. All graduate students are automatically members.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="header-logo" aria-label="CGSA home">
+        <img src="assets/cgsa-logo.svg" alt="CGSA — Chemistry Graduate Students' Association" width="200" height="60">
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#team">Exec Team</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#get-involved">Get Involved</a></li>
+          <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="flame-rule" aria-hidden="true"></div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top">
+      <div class="container">
+        <p class="kicker mono">Department of Chemistry · University of Calgary</p>
+        <h1>Chemistry Graduate Students&rsquo;&nbsp;Association</h1>
+        <p class="hero-lede">
+          We represent all graduate students in the Department of Chemistry at the
+          University of Calgary &mdash; advocating for students, running monthly
+          meetings, and bringing the department together outside the lab.
+        </p>
+        <div class="hero-actions">
+          <a href="#get-involved" class="btn btn-primary">Get involved</a>
+          <a href="#events" class="btn btn-secondary">Upcoming events</a>
+        </div>
+      </div>
+      <div class="container">
+        <div class="flame-rule flame-rule-wide" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- ============ MEMBERSHIP STRIP ============ -->
+    <aside class="member-strip" aria-label="Membership note">
+      <div class="container member-strip-inner">
+        <span class="member-strip-badge mono" aria-hidden="true">
+          <span class="el-num">6</span>
+          <span class="el-sym">C</span>
+        </span>
+        <p>
+          <strong>Already a member.</strong> Every graduate student in the Department
+          of Chemistry is automatically part of the CGSA &mdash; no sign-up needed.
+        </p>
+      </div>
+    </aside>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+      <div class="container">
+        <p class="kicker mono">01 · About</p>
+        <h2>Who we are</h2>
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>
+              The CGSA represents all graduate students in the Department of Chemistry
+              at the University of Calgary. All graduate students are automatically
+              members.
+            </p>
+            <p>
+              We hold monthly meetings to discuss issues affecting graduate students
+              and to plan social events &mdash; from department mixers to informal
+              get-togethers. If it matters to chemistry grad students, it&rsquo;s on
+              our agenda.
+            </p>
+            <ul class="about-list">
+              <li><strong>Advocacy</strong> &mdash; a collective voice for graduate students within the department</li>
+              <li><strong>Monthly meetings</strong> &mdash; open discussion of student issues and association business</li>
+              <li><strong>Social events</strong> &mdash; building community across research groups</li>
+            </ul>
+            <p class="about-constitution">
+              Our structure and elections are defined by the
+              <strong>CGSA Constitution</strong>, which sets out the executive roles
+              and annual spring elections. Ask any exec member for a copy.
+            </p>
+          </div>
+          <div class="about-logo-story" role="img" aria-label="The CGSA logo: a periodic-table style element block forming a letter C, with an Erlenmeyer flask">
+            <div class="element-tile">
+              <span class="el-num mono">6</span>
+              <span class="el-c">C</span>
+              <span class="el-name mono">Carbon &mdash; 12.011</span>
+            </div>
+            <p class="logo-story-caption">
+              Our mark borrows from the periodic table: a &ldquo;Carbon&rdquo; element
+              block forming the C in CGSA, paired with an Erlenmeyer flask.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TEAM PHOTO ============ -->
+    <figure class="team-photo">
+      <img src="assets/cgsa-team-photo.jpg"
+           alt="CGSA members gathered outdoors on the University of Calgary campus"
+           width="1920" height="768" loading="lazy">
+      <figcaption class="container mono">CGSA members, University of Calgary</figcaption>
+    </figure>
+
+    <!-- ============ EXEC TEAM ============ -->
+    <section class="section" id="team">
+      <div class="container">
+        <p class="kicker mono">02 · Executive Team</p>
+        <h2>Meet the exec</h2>
+        <p class="section-lede">
+          Elected and volunteer positions defined by the CGSA constitution. Reach out
+          to any of us &mdash; or email <a href="mailto:CGSA@ucalgary.ca">CGSA@ucalgary.ca</a>
+          for general inquiries.
+        </p>
+        <ul class="team-grid" id="team-grid">
+          <!-- Rendered from data/exec-team.js -->
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ EVENTS ============ -->
+    <section class="section section-alt" id="events">
+      <div class="container">
+        <p class="kicker mono">03 · Events</p>
+        <h2>Events</h2>
+        <p class="section-lede">
+          Monthly meetings, socials, and everything in between. Events are added here
+          as they&rsquo;re confirmed &mdash; follow our socials for the latest.
+        </p>
+        <div id="events-upcoming">
+          <!-- Rendered from data/events.js -->
+        </div>
+        <details class="events-past" id="events-past" hidden>
+          <summary>Past events</summary>
+          <div id="events-past-list"></div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============ GET INVOLVED ============ -->
+    <section class="section" id="get-involved">
+      <div class="container">
+        <p class="kicker mono">04 · Get Involved</p>
+        <h2>Get involved</h2>
+        <div class="involve-grid">
+          <article class="involve-card">
+            <h3>Volunteer</h3>
+            <p>
+              Help plan socials as an <strong>Event Coordinator</strong>, or support
+              the association in one of the other exec roles. It&rsquo;s a great way
+              to meet people outside your research group.
+            </p>
+          </article>
+          <article class="involve-card">
+            <h3>Run in elections</h3>
+            <p>
+              Elections for <strong>President</strong> and
+              <strong>Resource Administrator</strong> are held every spring. Watch
+              for the call for nominations at our monthly meetings.
+            </p>
+          </article>
+          <article class="involve-card">
+            <h3>Peer support &amp; safety</h3>
+            <p>
+              Our <strong>Peer Support Coordinators</strong> and
+              <strong>Safety Improvement Team Reps</strong> are here for you &mdash;
+              whether it&rsquo;s navigating grad school or raising a safety concern
+              in the department.
+            </p>
+          </article>
+        </div>
+        <p class="involve-cta">
+          Not sure where to start? Come to a monthly meeting or email
+          <a href="mailto:CGSA@ucalgary.ca">CGSA@ucalgary.ca</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section section-contact" id="contact">
+      <div class="container">
+        <p class="kicker mono">05 · Contact</p>
+        <h2>Say hello</h2>
+        <div class="contact-grid">
+          <div>
+            <p class="contact-label mono">General inquiries</p>
+            <a class="contact-email" href="mailto:CGSA@ucalgary.ca">CGSA@ucalgary.ca</a>
+            <p class="contact-location">
+              Department of Chemistry<br>
+              University of Calgary<br>
+              Calgary, Alberta
+            </p>
+          </div>
+          <div>
+            <p class="contact-label mono">Find us on</p>
+            <ul class="social-list">
+              <li>
+                <a href="#" class="social-link" aria-label="CGSA on X (link coming soon)">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M18.9 1.2h3.7l-8.1 9.3L24 22.8h-7.5l-5.9-7.7-6.7 7.7H.2l8.7-9.9L-.1 1.2h7.7l5.3 7 6-7Zm-1.3 19.4h2L6.5 3.3h-2.2l13.3 17.3Z"/></svg>
+                  <span>X</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="social-link" aria-label="CGSA on Instagram (link coming soon)">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.9.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.9.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.9-.9-1.4-.2-.4-.4-1-.4-2.2-.1-1.3-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.9-.7 1.4-.9.4-.2 1-.4 2.2-.4 1.3-.1 1.6-.1 4.8-.1Zm0 2c-3.1 0-3.5 0-4.7.1-1.1.1-1.5.2-1.8.3-.4.2-.7.3-1 .6-.3.3-.5.6-.6 1-.1.3-.3.8-.3 1.8-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.5.3 1.8.2.4.3.7.6 1 .3.3.6.5 1 .6.3.1.8.3 1.8.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.5-.2 1.8-.3.4-.2.7-.3 1-.6.3-.3.5-.6.6-1 .1-.3.3-.8.3-1.8.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.5-.3-1.8-.2-.4-.3-.7-.6-1-.3-.3-.6-.5-1-.6-.3-.1-.8-.3-1.8-.3-1.2-.1-1.6-.1-4.7-.1Zm0 3.4a5.1 5.1 0 1 1 0 10.2 5.1 5.1 0 0 1 0-10.2Zm0 8.4a3.3 3.3 0 1 0 0-6.6 3.3 3.3 0 0 0 0 6.6Zm5.3-9.9a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0Z"/></svg>
+                  <span>Instagram</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="social-link" aria-label="CGSA on Facebook (link coming soon)">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M24 12a12 12 0 1 0-13.9 11.9v-8.4h-3V12h3V9.4c0-3 1.8-4.7 4.6-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.3l-.5 3.5h-2.8v8.4A12 12 0 0 0 24 12Z"/></svg>
+                  <span>Facebook</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="social-link" aria-label="CGSA on LinkedIn (link coming soon)">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.9-3-1.9 0-2.1 1.4-2.1 2.9v5.7H9.2V9h3.4v1.6h.1c.5-.9 1.7-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.2ZM5.2 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM7 20.4H3.4V9H7v11.4ZM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 1 .8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-1-.8-1.7-1.8-1.7Z"/></svg>
+                  <span>LinkedIn</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="social-link" aria-label="CGSA on YouTube (link coming soon)">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.5 15.6V8.4L15.8 12l-6.3 3.6Z"/></svg>
+                  <span>YouTube</span>
+                </a>
+              </li>
+            </ul>
+            <p class="social-note">Social links coming soon.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="flame-rule" aria-hidden="true"></div>
+    <div class="container footer-inner">
+      <img src="assets/cgsa-logo-paper.svg" alt="CGSA — Chemistry Graduate Students' Association"
+           width="200" height="60" loading="lazy" class="footer-logo">
+      <p class="footer-meta mono">
+        Chemistry Graduate Students&rsquo; Association<br>
+        University of Calgary · <a href="mailto:CGSA@ucalgary.ca">CGSA@ucalgary.ca</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="data/exec-team.js"></script>
+  <script src="data/events.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
