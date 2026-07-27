@@ -215,12 +215,13 @@
         : "") +
       "</div>" +
       '<a class="btn btn-primary" href="' + esc(latest.pdf) +
-      '" target="_blank" rel="noopener">Read it</a>' +
+      '" target="_blank" rel="noopener">Check it out</a>' +
       "</div>";
 
     if (rest.length) {
       html +=
-        '<p class="newsletter-archive-label mono">Previous editions</p>' +
+        '<details class="newsletter-archive">' +
+        "<summary>Previous editions</summary>" +
         '<ul class="newsletter-list">' +
         rest.map(function (n) {
           return (
@@ -232,7 +233,7 @@
             "</li>"
           );
         }).join("") +
-        "</ul>";
+        "</ul></details>";
     }
 
     wrap.innerHTML = html;

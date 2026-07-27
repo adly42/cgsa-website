@@ -55,9 +55,11 @@ section. Older rows drop off automatically, so there's no need to delete
 them (though it keeps the sheet tidy).
 
 The Newsletter tab feeds the newsletter section: the newest edition (by
-Date) is featured with a read button, earlier ones are listed below, and
-the PDF column takes a pasted link (a Drive share link to the PDF works).
-The section stays hidden until the tab has at least one row.
+Date) is featured with a "Check it out" button, and earlier ones sit in a
+collapsed "Previous editions" dropdown. The PDF column takes a pasted
+link. For a Canva newsletter: Share → Download → PDF in Canva, upload the
+PDF to Google Drive, share it "Anyone with the link", and paste that Drive
+link into the cell. The section stays hidden until the tab has a row.
 
 ### Option B: edit the data files directly
 

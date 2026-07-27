@@ -13,9 +13,13 @@
 //          share link works if the file is shared "Anyone with
 //          the link")
 //
-// The newest edition is featured with a read button; the rest
-// are listed underneath. The whole section stays hidden until
-// at least one row exists.
+// The newest edition is featured with a "Check it out" button;
+// the rest sit in a collapsed "Previous editions" dropdown. The
+// whole section stays hidden until at least one row exists.
+//
+// Workflow for a Canva newsletter: in Canva, Share > Download >
+// PDF, upload that PDF to Google Drive, share it "Anyone with
+// the link", and paste the Drive link into the PDF column.
 //
 // This file is only used if the sheet can't be reached. Same
 // fields, lowercase:
