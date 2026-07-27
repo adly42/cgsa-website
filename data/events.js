@@ -19,13 +19,13 @@ const EVENTS = [
     title: "Fall Welcome Social",
     time: "TBD",
     location: "TBD",
-    blurb: "Kick off the semester and meet fellow chemistry grad students. All members welcome — that's every grad student in the department!"
+    blurb: "Meet the rest of the department's grad students before the semester swallows you. Everyone is welcome, which in our case means literally everyone."
   },
   {
     date: "2026-09-24",
     title: "Monthly General Meeting",
     time: "TBD",
     location: "TBD",
-    blurb: "Our regular monthly meeting: department issues, upcoming socials, and anything members want to raise."
+    blurb: "Our regular monthly meeting. Department issues, social plans, and anything members want to raise. Come with an agenda item or just come."
   }
 ];

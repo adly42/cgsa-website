@@ -132,8 +132,8 @@
 
     upcomingWrap.innerHTML = upcoming.length
       ? '<ul class="event-list">' + upcoming.map(eventCard).join("") + "</ul>"
-      : '<p class="events-empty">Nothing scheduled right now — check back soon, ' +
-        "or follow our socials for announcements.</p>";
+      : '<p class="events-empty">Nothing on the calendar right now. ' +
+        "Check back soon, or watch our socials.</p>";
 
     var pastWrap = document.getElementById("events-past");
     var pastList = document.getElementById("events-past-list");
