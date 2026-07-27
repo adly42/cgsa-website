@@ -8,8 +8,10 @@
 //   role:  their exec position (don't change these — they match
 //          the CGSA constitution)
 //   email: their contact email, or "" to hide the email link
-//   photo: path to a photo (e.g. "assets/team/firstname.jpg"),
-//          or "" to show the default flask placeholder
+//   photo: link to a photo, or "" to show the default flask
+//          placeholder. Can be a file in the repo (e.g.
+//          "assets/team/firstname.jpg") or a Google Drive share
+//          link (file must be shared "Anyone with the link")
 //
 // Roles per the CGSA constitution: President, Vice President,
 // Resource Administrator, Social Media & Marketing Admin,

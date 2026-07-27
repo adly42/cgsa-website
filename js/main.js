@@ -57,6 +57,21 @@
     });
   }
 
+  // Accept regular Google Drive share links as photo URLs by
+  // rewriting them to Drive's direct-image endpoint. Any other
+  // URL passes through untouched.
+  //   drive.google.com/file/d/FILE_ID/view...  → thumbnail URL
+  //   drive.google.com/open?id=FILE_ID         → thumbnail URL
+  function photoUrl(url) {
+    url = String(url || "").trim();
+    if (!url) return "";
+    var m = /drive\.google\.com\/file\/d\/([\w-]+)/.exec(url) ||
+      /drive\.google\.com\/(?:open|uc)\?.*id=([\w-]+)/.exec(url);
+    return m
+      ? "https://drive.google.com/thumbnail?id=" + m[1] + "&sz=w800"
+      : url;
+  }
+
   /* ---------- exec team rendering ---------- */
 
   var FLASK_SVG =
@@ -69,7 +84,7 @@
     teamGrid.innerHTML = members.map(function (member) {
       var isTbd = !member.name || /^tbd$/i.test(member.name.trim());
       var photo = member.photo
-        ? '<img src="' + esc(member.photo) + '" alt="" width="56" height="56" loading="lazy">'
+        ? '<img src="' + esc(photoUrl(member.photo)) + '" alt="" width="56" height="56" loading="lazy">'
         : FLASK_SVG;
       var email = member.email
         ? '<a class="team-card-email" href="mailto:' + esc(member.email) + '">' +
@@ -104,13 +119,17 @@
     var meta = [dateText, ev.time, ev.location]
       .filter(function (x) { return x && x !== "TBD"; })
       .join(" · ");
+    var photo = ev.photo
+      ? '<img class="event-photo" src="' + esc(photoUrl(ev.photo)) +
+        '" alt="" loading="lazy">'
+      : "";
     return (
-      '<li class="event-card">' + dateTile +
+      '<li class="event-card' + (photo ? " has-photo" : "") + '">' + dateTile +
       '<div class="event-body">' +
       "<h3>" + esc(ev.title) + "</h3>" +
       (meta ? '<p class="event-meta">' + esc(meta) + "</p>" : "") +
       (ev.blurb ? '<p class="event-blurb">' + esc(ev.blurb) + "</p>" : "") +
-      "</div></li>"
+      "</div>" + photo + "</li>"
     );
   }
 

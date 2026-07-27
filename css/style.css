@@ -805,6 +805,31 @@ summary {
   font-size: 0.95rem;
 }
 
+.event-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.event-photo {
+  flex: none;
+  width: 9rem;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  align-self: center;
+}
+
+@media (max-width: 40rem) {
+  .event-card.has-photo {
+    flex-wrap: wrap;
+  }
+
+  .event-photo {
+    width: 100%;
+    order: -1;
+  }
+}
+
 .events-empty {
   color: var(--slate);
   background: #fff;

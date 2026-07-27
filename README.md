@@ -31,10 +31,17 @@ One-time setup:
    handoffs). Add two tabs named exactly **Exec** and **Events**.
 2. Put these headers in row 1 of each tab:
    - **Exec**: `Name | Role | Email | Photo`
-     (Photo is an optional image URL; leave blank for the flask icon)
-   - **Events**: `Date | Title | Time | Location | Blurb`
+   - **Events**: `Date | Title | Time | Location | Blurb | Photo`
      (Date must be typed as `YYYY-MM-DD`, e.g. `2026-09-10` — format that
      column as **Plain text** so Sheets doesn't reformat it)
+
+   **Photo columns take a link, not an embedded image.** Paste an image URL
+   into the cell as text. Do NOT use Insert → Image — images placed inside
+   cells never reach the site. The easiest workflow: upload the photo to
+   Google Drive, set its sharing to "Anyone with the link", right-click →
+   Copy link, and paste that into the cell — the site converts Drive share
+   links to displayable images automatically. Leave the cell blank for no
+   photo (exec cards show a flask icon instead).
 3. Share → "Anyone with the link" → **Viewer**.
 4. Copy the sheet ID from its URL
    (`docs.google.com/spreadsheets/d/`**`THIS-LONG-ID`**`/edit`) and paste it
