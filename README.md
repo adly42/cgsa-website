@@ -48,8 +48,9 @@ One-time setup:
    into `data/config.js` between the quotes: `sheetId: "THIS-LONG-ID"`.
    This is the only code-adjacent step and happens once.
 
-From then on: edit the sheet, done. Events dated in the past move to
-"Past events" automatically.
+From then on: edit the sheet, done. The site shows the next 10 upcoming
+events; anything dated in the past drops off automatically, so there's no
+need to delete old rows (though it keeps the sheet tidy).
 
 ### Option B: edit the data files directly
 

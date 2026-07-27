@@ -5,8 +5,9 @@
 // paste it at the top of the list, and edit the text.
 //
 //   date:     "YYYY-MM-DD" (used for sorting and the calendar
-//             tile; events with a past date move to "Past
-//             events" automatically)
+//             tile; events with a past date disappear from the
+//             site automatically, and only the next 10 upcoming
+//             events are shown)
 //   title:    event name
 //   time:     free text, e.g. "5:00 PM – 7:00 PM"
 //   location: free text, e.g. "Science Theatres 140"
