@@ -37,7 +37,8 @@
 
 6. **Contact**
    - General inquiries: CGSA@ucalgary.ca
-   - Social links: X, Instagram, Facebook, LinkedIn, YouTube
+   - Social links: Instagram (@cgsa.ucalgary), TikTok (@ucalgarycgsa) —
+     the CGSA has no X, Facebook, LinkedIn, or YouTube presence
    - Location: Department of Chemistry, University of Calgary
 
 ## Notes for build

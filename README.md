@@ -20,24 +20,52 @@ python3 -m http.server 8000
 
 ## How to update the site (no coding needed)
 
-The two things that change every year live in the `data/` folder:
+### Option A: Google Sheet (recommended)
 
-- **`data/exec-team.js`** — the executive team. Edit the names, emails, and
-  photo paths in quotes. Instructions are at the top of the file.
-- **`data/events.js`** — events. Copy an existing block to add an event.
-  Events dated in the past automatically move to "Past events."
+Once set up, anyone with edit access to the sheet can update the exec team
+and events. No code, no git, changes show up on the next page load.
 
-Save the file, refresh the page, done.
+One-time setup:
+
+1. Create a Google Sheet (a shared CGSA account is best, so it survives
+   handoffs). Add two tabs named exactly **Exec** and **Events**.
+2. Put these headers in row 1 of each tab:
+   - **Exec**: `Name | Role | Email | Photo`
+     (Photo is an optional image URL; leave blank for the flask icon)
+   - **Events**: `Date | Title | Time | Location | Blurb`
+     (Date must be typed as `YYYY-MM-DD`, e.g. `2026-09-10` — format that
+     column as **Plain text** so Sheets doesn't reformat it)
+3. Share → "Anyone with the link" → **Viewer**.
+4. Copy the sheet ID from its URL
+   (`docs.google.com/spreadsheets/d/`**`THIS-LONG-ID`**`/edit`) and paste it
+   into `data/config.js` between the quotes: `sheetId: "THIS-LONG-ID"`.
+   This is the only code-adjacent step and happens once.
+
+From then on: edit the sheet, done. Events dated in the past move to
+"Past events" automatically.
+
+### Option B: edit the data files directly
+
+If no sheet is configured (or it ever breaks, or someone deletes it), the
+site uses the files in `data/`:
+
+- **`data/exec-team.js`** — the executive team roster
+- **`data/events.js`** — the events list
+
+Instructions are at the top of each file. The site also falls back to these
+files automatically whenever the sheet can't be reached, so it never shows
+a broken page. Keep them roughly current as a safety net.
 
 ## Project structure
 
 ```
 index.html            the whole site (single page)
 css/style.css         styles ("Flame Test" palette, see BRAND.md)
-js/main.js            renders team + events from data/, mobile nav
-data/exec-team.js     ← edit this: exec roster
-data/events.js        ← edit this: events
-assets/               logo (ink + paper variants), team photo
+js/main.js            renders team + events (sheet or data/), mobile nav
+data/config.js        ← Google Sheet ID goes here (one-time setup)
+data/exec-team.js     ← fallback exec roster
+data/events.js        ← fallback events list
+assets/               logo (ink + paper variants), team photo, fonts
 BRAND.md              visual identity: colors, typography, logo usage
 LAYOUT.md             site plan / section spec
 ```

@@ -1,7 +1,7 @@
-/* CGSA site scripts: mobile nav + rendering exec team and events
-   from the editable data files in /data. Volunteers should not
-   need to touch this file — edit data/exec-team.js and
-   data/events.js instead. */
+/* CGSA site scripts: mobile nav + rendering the exec team and
+   events. Data comes from a Google Sheet when data/config.js has
+   a sheetId, otherwise from data/exec-team.js and data/events.js.
+   Volunteers should not need to touch this file. */
 
 (function () {
   "use strict";
@@ -9,7 +9,7 @@
   /* ---------- helpers ---------- */
 
   // All rendered data passes through esc() so stray quotes or
-  // angle brackets in the data files can't break the page.
+  // angle brackets in the data can't break the page.
   function esc(str) {
     return String(str)
       .replace(/&/g, "&amp;")
@@ -57,15 +57,16 @@
     });
   }
 
-  /* ---------- exec team ---------- */
+  /* ---------- exec team rendering ---------- */
 
   var FLASK_SVG =
     '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">' +
     '<path fill="currentColor" d="M9 2h6v2h-1v5.2l5.5 9.6A2 2 0 0 1 17.8 22H6.2a2 2 0 0 1-1.7-3.2L10 9.2V4H9V2Zm3 2v5.7L8.6 15h6.8L12 9.7V4Z"/></svg>';
 
-  var teamGrid = document.getElementById("team-grid");
-  if (teamGrid && typeof EXEC_TEAM !== "undefined") {
-    teamGrid.innerHTML = EXEC_TEAM.map(function (member) {
+  function renderTeam(members) {
+    var teamGrid = document.getElementById("team-grid");
+    if (!teamGrid || !members || !members.length) return;
+    teamGrid.innerHTML = members.map(function (member) {
       var isTbd = !member.name || /^tbd$/i.test(member.name.trim());
       var photo = member.photo
         ? '<img src="' + esc(member.photo) + '" alt="" width="56" height="56" loading="lazy">'
@@ -87,7 +88,7 @@
     }).join("");
   }
 
-  /* ---------- events ---------- */
+  /* ---------- events rendering ---------- */
 
   function eventCard(ev) {
     var d = parseDate(ev.date);
@@ -113,12 +114,14 @@
     );
   }
 
-  var upcomingWrap = document.getElementById("events-upcoming");
-  if (upcomingWrap && typeof EVENTS !== "undefined") {
+  function renderEvents(events) {
+    var upcomingWrap = document.getElementById("events-upcoming");
+    if (!upcomingWrap || !events) return;
+
     var today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    var sorted = EVENTS.slice().sort(function (a, b) {
+    var sorted = events.slice().sort(function (a, b) {
       return String(a.date).localeCompare(String(b.date));
     });
     var upcoming = sorted.filter(function (ev) {
@@ -137,10 +140,106 @@
 
     var pastWrap = document.getElementById("events-past");
     var pastList = document.getElementById("events-past-list");
-    if (past.length && pastWrap && pastList) {
-      pastList.innerHTML =
-        '<ul class="event-list">' + past.map(eventCard).join("") + "</ul>";
-      pastWrap.hidden = false;
+    if (pastWrap && pastList) {
+      if (past.length) {
+        pastList.innerHTML =
+          '<ul class="event-list">' + past.map(eventCard).join("") + "</ul>";
+        pastWrap.hidden = false;
+      } else {
+        pastWrap.hidden = true;
+      }
     }
   }
+
+  /* ---------- Google Sheet loading ---------- */
+
+  // Minimal CSV parser that handles quoted fields, embedded
+  // commas, escaped quotes ("") and newlines inside quotes.
+  function parseCSV(text) {
+    var rows = [];
+    var row = [];
+    var field = "";
+    var inQuotes = false;
+    for (var i = 0; i < text.length; i++) {
+      var ch = text[i];
+      if (inQuotes) {
+        if (ch === '"') {
+          if (text[i + 1] === '"') { field += '"'; i++; }
+          else inQuotes = false;
+        } else {
+          field += ch;
+        }
+      } else if (ch === '"') {
+        inQuotes = true;
+      } else if (ch === ",") {
+        row.push(field); field = "";
+      } else if (ch === "\n" || ch === "\r") {
+        if (ch === "\r" && text[i + 1] === "\n") i++;
+        row.push(field); field = "";
+        rows.push(row); row = [];
+      } else {
+        field += ch;
+      }
+    }
+    if (field !== "" || row.length) { row.push(field); rows.push(row); }
+    return rows;
+  }
+
+  // Turn CSV rows into objects keyed by lowercased header names,
+  // skipping fully empty rows.
+  function csvToObjects(text) {
+    var rows = parseCSV(text);
+    if (rows.length < 2) return [];
+    var headers = rows[0].map(function (h) { return h.trim().toLowerCase(); });
+    return rows.slice(1).map(function (cells) {
+      var obj = {};
+      headers.forEach(function (h, i) {
+        if (h) obj[h] = (cells[i] || "").trim();
+      });
+      return obj;
+    }).filter(function (obj) {
+      return Object.keys(obj).some(function (k) { return obj[k] !== ""; });
+    });
+  }
+
+  function fetchSheetTab(sheetId, tabName) {
+    var url = "https://docs.google.com/spreadsheets/d/" +
+      encodeURIComponent(sheetId) +
+      "/gviz/tq?tqx=out:csv&sheet=" + encodeURIComponent(tabName);
+    return fetch(url).then(function (res) {
+      if (!res.ok) throw new Error("Sheet tab '" + tabName + "': HTTP " + res.status);
+      return res.text();
+    }).then(csvToObjects);
+  }
+
+  /* ---------- init ---------- */
+
+  var localTeam = typeof EXEC_TEAM !== "undefined" ? EXEC_TEAM : [];
+  var localEvents = typeof EVENTS !== "undefined" ? EVENTS : [];
+  var sheetId =
+    typeof SITE_CONFIG !== "undefined" && SITE_CONFIG && SITE_CONFIG.sheetId
+      ? String(SITE_CONFIG.sheetId).trim()
+      : "";
+
+  if (!sheetId) {
+    renderTeam(localTeam);
+    renderEvents(localEvents);
+    return;
+  }
+
+  // Sheet configured: try it first, fall back to the local data
+  // files if it's unreachable, empty, or misconfigured.
+  Promise.all([
+    fetchSheetTab(sheetId, "Exec"),
+    fetchSheetTab(sheetId, "Events")
+  ]).then(function (results) {
+    var team = results[0];
+    var events = results[1];
+    renderTeam(team.length ? team : localTeam);
+    renderEvents(events.length ? events : localEvents);
+  }).catch(function (err) {
+    if (window.console) console.warn("CGSA: falling back to local data.", err);
+    renderTeam(localTeam);
+    renderEvents(localEvents);
+  });
 })();
