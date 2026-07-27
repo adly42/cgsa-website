@@ -47,8 +47,9 @@ LAYOUT.md             site plan / section spec
 - Colors: Flame Red `#E4572E`, Ember Orange `#F79824`, Flame Yellow
   `#F7C548`, Bunsen Green `#4C9F70`, Ink `#231F20`, Paper `#FAF8F5`,
   Slate `#6B6864` — accents only, never big color blocks.
-- Type: Space Grotesk (headings), Inter (body), JetBrains Mono (small
-  technical accents). Loaded from Google Fonts.
+- Type: Lastik (display headings), Satoshi (body), JetBrains Mono (small
+  technical accents). Lastik and Satoshi are self-hosted in `assets/fonts/`;
+  JetBrains Mono comes from Google Fonts.
 
 ## Deploying
 

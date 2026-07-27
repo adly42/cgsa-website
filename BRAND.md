@@ -32,15 +32,14 @@ hero accents/dividers, green reserved for confirmation/success moments.
 Logo wordmark uses a rounded slab-ish sans (reads like Open Sans) — **not used
 site-wide**, it's for the mark only.
 
-- **Headings:** Space Grotesk — geometric, slightly technical, modern without
-  being sterile. Pairs well with a science/lab aesthetic.
-- **Body:** Inter — highly legible, neutral, great at small sizes for dense
-  content (event listings, exec bios).
-- **Accent/mono (optional):** JetBrains Mono — for small tags like the "6 /
-  Carbon / 12.011" element-block detail, atomic numbers, or event dates styled
-  like periodic table cells.
-
-Both are free on Google Fonts.
+- **Display (h1/h2, element-tile C):** Lastik — characterful display face,
+  single 400 weight (free cut), self-hosted at `assets/fonts/`. Never
+  synthesize bold.
+- **Body + subheadings:** Satoshi — variable weight 300–900, self-hosted at
+  `assets/fonts/` (normal + italic).
+- **Accent/mono:** JetBrains Mono — for small tags like the "6 / Carbon /
+  12.011" element-block detail, atomic numbers, or event dates styled like
+  periodic table cells. Loaded from Google Fonts.
 
 ## Logo Usage Note
 

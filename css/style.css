@@ -19,8 +19,9 @@
   --ink-fainter: rgba(35, 31, 32, 0.05);
 
   /* Type */
-  --font-heading: "Space Grotesk", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
+  --font-display: "Lastik", system-ui, sans-serif;
+  --font-heading: "Satoshi", system-ui, sans-serif;
+  --font-body: "Satoshi", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
@@ -48,6 +49,32 @@
   :root {
     --border-hairline: 0.5px;
   }
+}
+
+/* ============ Fonts (self-hosted, see assets/fonts) ============ */
+
+@font-face {
+  font-family: "Lastik";
+  src: url("../assets/fonts/LastikFreeFont-Free.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-Variable.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-VariableItalic.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: italic;
+  font-display: swap;
 }
 
 /* ============ Reset & base ============ */
@@ -94,6 +121,16 @@ h3 {
   letter-spacing: -0.02em;
   text-wrap: balance;
   margin: 0 0 1rem;
+}
+
+/* Lastik ships in one weight — display headings stay at 400 so the
+   browser never synthesizes a faux bold. */
+h1,
+h2 {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: 0;
+  line-height: 1.08;
 }
 
 h1 {
@@ -590,9 +627,9 @@ summary {
 }
 
 .element-tile .el-c {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-size: 4.5rem;
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-normal);
   line-height: 1;
 }
 
