@@ -592,6 +592,10 @@ summary {
   background: var(--flame-yellow);
 }
 
+.about-list li:nth-child(4)::before {
+  background: var(--bunsen-green);
+}
+
 .about-constitution {
   color: var(--slate);
   font-size: 0.95rem;
