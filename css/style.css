@@ -498,31 +498,6 @@ summary {
   font-weight: var(--font-weight-semibold);
 }
 
-.member-strip-badge {
-  flex: none;
-  width: 2.6rem;
-  height: 2.6rem;
-  display: grid;
-  place-items: center;
-  position: relative;
-  border: var(--border-hairline) solid rgba(250, 248, 245, 0.4);
-  border-radius: 4px;
-  user-select: none;
-}
-
-.member-strip-badge .el-num {
-  position: absolute;
-  top: 2px;
-  left: 5px;
-  font-size: 0.55rem;
-  opacity: 0.7;
-}
-
-.member-strip-badge .el-sym {
-  font-size: 1.15rem;
-  font-weight: var(--font-weight-medium);
-}
-
 /* ============ Sections ============ */
 
 .section {
