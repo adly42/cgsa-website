@@ -516,18 +516,8 @@ summary {
 
 /* ============ About ============ */
 
-.about-grid {
-  display: grid;
-  gap: 2.5rem;
-  grid-template-columns: 1fr;
-  align-items: start;
-}
-
-@media (min-width: 48rem) {
-  .about-grid {
-    grid-template-columns: 1.6fr 1fr;
-    gap: 4rem;
-  }
+.about-copy {
+  max-width: 60ch;
 }
 
 .about-copy p:first-child {
@@ -577,53 +567,6 @@ summary {
   border-top: var(--border-hairline) solid var(--ink-soft);
   padding-top: 1.25rem;
   margin-bottom: 0;
-}
-
-/* Element tile (logo story) */
-
-.about-logo-story {
-  user-select: none;
-}
-
-.element-tile {
-  aspect-ratio: 1;
-  max-width: 13rem;
-  display: grid;
-  place-items: center;
-  position: relative;
-  border: 2px solid var(--ink);
-  border-radius: var(--radius);
-  background: #fff;
-  box-shadow: 4px 4px 0 var(--flame-yellow);
-}
-
-.element-tile .el-num {
-  position: absolute;
-  top: 0.6rem;
-  left: 0.8rem;
-  font-size: 0.85rem;
-  color: var(--slate);
-}
-
-.element-tile .el-c {
-  font-family: var(--font-display);
-  font-size: 4.5rem;
-  font-weight: var(--font-weight-normal);
-  line-height: 1;
-}
-
-.element-tile .el-name {
-  position: absolute;
-  bottom: 0.7rem;
-  font-size: 0.7rem;
-  color: var(--slate);
-}
-
-.logo-story-caption {
-  margin-top: 1.25rem;
-  font-size: 0.9rem;
-  color: var(--slate);
-  max-width: 26ch;
 }
 
 /* ============ Team photo band ============ */
